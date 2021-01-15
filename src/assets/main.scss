@@ -1,0 +1,61 @@
+@import "https://unpkg.com/vuent/dist/vuent.css";
+
+.widget {
+    max-width: 240px;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+    margin: 0 40px;
+    &__toolbar {
+        display: flex;
+        margin-top: 20px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__content {
+
+    }
+}
+
+p, h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+
+.weather {
+    &__header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
+    }
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        text-align: start;
+    }
+}
+
+.row {
+    display: flex;
+    align-items: center;
+}
+
+.col {
+    flex: 1;
+    margin: 8px 0;
+}
+
+.w-icon {
+  height: 12pt;
+  width: auto;
+  margin-right: 4px;
+}
+
+.w-icon-reverse {
+    transform: rotate(-40deg);
+}

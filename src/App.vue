@@ -1,28 +1,42 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="widget">
+    <div class="widget__toolbar">
+      <h4>Weather Widget</h4>
+      <vnt-icon name="settings" />
+    </div>
+    <div class="widget__content">
+      <weather :weatherData="weatherData"></weather>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Weather from "@/components/Weather";
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  components: { Weather },
+  name: "App",
+  data() {
+    return {
+      weatherData: {},
+    };
+  },
+  created() {
+    this.getWeather();
+  },
+  methods: {
+    async getWeather() {
+      try {
+        const result = await this.$http
+          .get(
+            "http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=5fefa6da73425bc10f941aab7619eef9&units=metric"
+          )
+          .then((r) => r.data);
+        this.weatherData = result;
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
+  computed: {},
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
