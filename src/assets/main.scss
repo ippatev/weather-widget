@@ -1,40 +1,77 @@
 @import "https://unpkg.com/vuent/dist/vuent.css";
 
+$backgroundColor: #fff;
+$wListItemColor: #ccc;
+$wListItemTextColor: #000100;
+
 .widget {
+    background-color: $backgroundColor;
     max-width: 240px;
+    position: relative;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
-    margin: 0 40px;
+    // margin-top: 60px;
+    padding: 20px 40px;
     &__toolbar {
+        width: 100%;
         display: flex;
-        margin-top: 20px;
+        position: absolute;
+        right: 0;
         justify-content: space-between;
         align-items: center;
+
+        &--title {
+             margin-left: 40px;
+        }
     }
 
     &__content {
-
+        &--title {
+            text-align: start;
+        }
     }
+}
+
+.weather-none {
+    margin-top: 40px;
 }
 
 p, h1, h2, h3, h4, h5 {
     margin: 0;
 }
 
+p {
+    display: inline-block;
+    font-size: 14px;
+}
+
+.mt-4 {
+    margin-top: 32px;
+}
+
 .weather {
+    margin-bottom: 40px;
     &__header {
+        // margin: 20px 0;
+    }
+
+    &__header--title {
+        margin-left: 10px;
+    }
+
+    &__header--img {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 20px 0;
+        margin: 10px 0;
+        margin-left: -20px;
     }
 
     &__content {
-        display: flex;
+        // display: flex;
         justify-content: space-between;
         text-align: start;
     }
@@ -47,6 +84,7 @@ p, h1, h2, h3, h4, h5 {
 
 .col {
     flex: 1;
+    flex-basis: 50%;
     margin: 8px 0;
 }
 
@@ -58,4 +96,75 @@ p, h1, h2, h3, h4, h5 {
 
 .w-icon-reverse {
     transform: rotate(-40deg);
+}
+
+.w-btn-icon {
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+.container {
+    margin: 40px 0;
+}
+
+.w-input {
+    padding-top: 40px;
+    text-align: start;
+    overflow: hidden;
+
+    &__icon {
+        margin-left: 16px;
+    }
+}
+
+.vnt-input {
+    display: inline-block;
+    &__control {
+        min-width: auto;
+    }
+}
+
+.w-city-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 30px;
+  background: $wListItemColor;
+  border: 1px solid $wListItemColor;
+  border-radius: 0;
+  color: $wListItemTextColor;
+  padding: 0 10px;
+  line-height: 30px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  & ~ & {
+    margin-left: 4px;
+  }
+  &:hover {
+    border-color: #979797;
+  }
+  &:active {
+    background: #979797;
+  }
+  &:disabled {
+    color: #7a7a7a;
+    &:hover {
+      border-color: $wListItemColor;
+    }
+  }
+
+  &__title {
+      margin-left: 8px;
+  }
+}
+
+.vnt-listview-item {
+    padding: 4px 0;
+    margin-top: 8px;
+
+    &:hover, :focus {
+        outline: none;
+        border: none;
+    }
 }

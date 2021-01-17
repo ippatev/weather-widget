@@ -13,7 +13,9 @@
     "document-register-element": "^1.14.10",
     "vue": "^2.6.11",
     "vue-custom-element": "^3.2.14",
-    "vuent": "^0.7.0"
+    "vuedraggable": "^2.24.3",
+    "vuent": "^0.7.0",
+    "vuex": "^3.6.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -25,7 +27,7 @@
     "sass": "^1.32.4",
     "sass-loader": "^10.1.1",
     "vue-template-compiler": "^2.6.11",
-    "webpack": "^5.14.0"
+    "webpack": "4.16.1"
   },
   "eslintConfig": {
     "root": true,

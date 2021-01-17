@@ -3,6 +3,9 @@
     viewBox="0 0 1000 1000"
     enable-background="new 0 0 1000 1000"
     xml:space="preserve"
+    :style="{
+      transform: getWindDeg,
+    }"
     class="w-icon w-icon-reverse"
   >
     <g fill="#48484a">
@@ -15,3 +18,18 @@
     </g>
   </svg>
 </template>
+
+<script>
+export default {
+  props: {
+    windDeg: {
+      type: Number,
+    },
+  },
+  computed: {
+    getWindDeg() {
+      return `rotate(${this.windDeg}deg)`;
+    },
+  },
+};
+</script>

@@ -1,42 +1,75 @@
 <template>
   <div class="widget">
-    <div class="widget__toolbar">
-      <h4>Weather Widget</h4>
-      <vnt-icon name="settings" />
-    </div>
+    <widget-toolbar
+      @iconClickHandler="setWindow"
+      :icon="getWidgetIcon"
+      :title="getWidgetTitle"
+    ></widget-toolbar>
     <div class="widget__content">
-      <weather :weatherData="weatherData"></weather>
+      <div v-if="showSettingsWindow">
+        <settings></settings>
+      </div>
+      <div v-else-if="weathers.length === 0" @click="setWindow('')">
+        <vnt-button class="weather-none">Добавить город</vnt-button>
+      </div>
+      <div v-else>
+        <weather v-for="w in weathers" :key="w.id" :weatherData="w"></weather>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Weather from "@/components/Weather";
+import WidgetToolbar from "@/components/WidgetToolbar";
+import Settings from "@/components/Settings";
+import { mapActions, mapState } from "vuex";
 export default {
-  components: { Weather },
+  components: { Weather, WidgetToolbar, Settings },
   name: "App",
   data() {
     return {
-      weatherData: {},
+      showSettingsWindow: false,
     };
   },
+  computed: {
+    ...mapState({
+      weathers: "weathers",
+    }),
+    getWidgetIcon() {
+      return this.showSettingsWindow ? "close" : "settings";
+    },
+    getWidgetTitle() {
+      return this.showSettingsWindow ? "Settings" : "";
+    },
+  },
   created() {
-    this.getWeather();
+    this.loadWeathers();
   },
   methods: {
-    async getWeather() {
+    ...mapActions({
+      loadWeathers: "load",
+    }),
+    setWindow(toolbarTitle) {
+      switch (toolbarTitle) {
+        case "Settings":
+          this.showSettingsWindow = false;
+          break;
+        case "":
+          this.showSettingsWindow = true;
+          break;
+      }
+    },
+    getWeather() {
       try {
-        const result = await this.$http
-          .get(
-            "http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=5fefa6da73425bc10f941aab7619eef9&units=metric"
-          )
-          .then((r) => r.data);
-        this.weatherData = result;
+        let lsArray = localStorage.getItem("list")
+          ? JSON.parse(localStorage.getItem("list"))
+          : [];
+        this.weathers = lsArray;
       } catch (error) {
         console.error(error);
       }
     },
   },
-  computed: {},
 };
 </script>
