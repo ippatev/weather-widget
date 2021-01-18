@@ -1,5 +1,7 @@
 # weather-widget
 
+Preview: [https://infallible-babbage-069b9d.netlify.app/](https://infallible-babbage-069b9d.netlify.app/)
+
 # How do I install the widget?
 
 ```
