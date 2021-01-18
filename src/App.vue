@@ -70,7 +70,7 @@ export default {
       try {
         await this.$http
           .get(
-            `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=5fefa6da73425bc10f941aab7619eef9&units=metric`
+            `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=5fefa6da73425bc10f941aab7619eef9&units=metric`
           )
           .then((r) => {
             this.addWeather(r.data);

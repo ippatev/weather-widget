@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     getImageUrl(id) {
-      return `http://openweathermap.org/img/w/${id}.png`;
+      return `https://openweathermap.org/img/w/${id}.png`;
     },
   },
 };
